@@ -6,8 +6,11 @@ from flask import request
 from werkzeug.urls import url_parse
 from app import db
 from app.forms import AddMealForm, ClearCartForm, DeleteCartForm
+from importlib import reload
+
 import sys
-  
+
+reload(sys)
 sys.setdefaultencoding('utf8')
 
 # функция для добавления блюда из меню в корзину
