@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+    <div><h3>Корзина</h3></div>
+    <ul style="list-style-type:none;">
+        {% set vars = {'ind': 0} %}
+        {% for u in meals_list %}
+        <li> <div class="menuMeal"><b>{{ u.meal }} </b></div>    <div class="menuPrice">{{ u.price }} руб.</div> <br> <hr> <div>{{ u.amount }} г.</div> <br>
+        <form action="{{ url_for('delete_elem', id=vars.ind) }}" method="post" class="myButton">
+            {{ forms_delete[vars.ind].hidden_tag() }}
+            <b>{{ forms_delete[vars.ind].submit() }}</b>
+        </form> <br> <br>
+        {% set i = vars.ind+1 %}
+        {% if vars.update({'ind': i}) %} {% endif %}
+
+        </li>
+        {% endfor %}
+    </ul>
+    <p><b>Число блюд:</b> {{ num_meals }}</p>
+    <p><b>Итоговый вес:</b> {{ total_amount }} г.</p>
+    <p><b>Итоговая стоимость:</b> {{ total_price }} руб.</p>
+    <form action="" method="post">
+        {{ form_clear.hidden_tag() }}
+        <b>{{ form_clear.submit() }}</b>
+    </form>
+    
+{% endblock %}

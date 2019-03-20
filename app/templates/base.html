@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+      {% if title %}
+      <title>{{ title }} - Mini-app</title>
+      {% else %}
+      <title>Welcome to Mini-app</title>
+      {% endif %}
+      <style type="text/css">
+        .header {
+          position: relative;
+          float: none;
+          text-align: center;
+          padding-bottom: 5%;
+          padding-top: 0px;
+        }
+        .menuMeal {
+          float: left;
+        }
+        .menuPrice {
+          float: right;
+
+
+        }
+        .menuWeight {
+
+        }
+        .hide {
+          display: none;
+
+        }
+        .hide + label ~ div{
+          display: none;
+          padding: 3%;
+        }
+        .hide + label {
+          border-bottom: 1px dotted blue;
+          cursor: pointer;
+          display: inline-block;
+          color: blue;
+          padding-top: 2%;
+        }
+        .hide:checked + label {
+          color: red;
+          border-bottom: none;
+        }
+        .hide:checked + label + div {
+          display: block;
+
+        }
+        .frontBody {
+          position: absolute;
+          left: 20%;
+          width: 60%;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+          padding: 5%;
+          min-height: 100%;
+          background-color: rgba(255, 255, 255, 0.7);
+        }
+        body {
+          background: url('https://www.msu.ru/upload/iblock/f91/20171026_01.jpg') no-repeat center center fixed;
+          background-size: cover;
+          font-family: sans-serif;
+          src: url('fonts/helvetic.ttf');
+        }
+        .logo {
+          
+          height: 10%;
+          width: 10%;
+
+        }
+        .myButton {
+          float: right;
+        }
+        
+        nav {
+          position: relative;
+          display: block;
+          margin: 0 auto 30px;
+        }
+        .navi ul {
+          list-style: none; 
+          margin: 0; 
+          padding-left: 0;
+          overflow: hidden;
+        }
+        .navi li {
+          float: left;
+        }
+        .navi a {
+          display: block;
+          padding: 1em;
+          border-right: 1px solid #ADC0CE;
+          background: rgba(0, 0, 0, 0);
+          color: #29838C;
+          text-decoration: none;
+
+        }
+          
+        .navi a:hover {
+          background: #ADC0CE
+        }
+        
+
+      </style>
+    </head>
+    <body>
+      <div class="frontBody">
+        <center><img class="logo" src="https://bumper-stickers.ru/27102-thickbox_default/tarelka-vilka-lojka.jpg"></center>
+        <h1 class="header">Столовые <br> МГУ</h1>
+        <nav class="navi">
+          <ul class="mapBox">        
+            <li class="mapBoxLi"> <a href="{{ url_for('index') }}" class="siteMap" style="border-left: 1px solid #ADC0CE;">Меню</a> </li>
+
+            <li class="mapBoxLi"> <a href="{{ url_for('cart_func') }}" class="siteMap">Корзина</a> </li>
+          </ul>
+        </nav>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+        
+
+      </div>
+    </body>
+</html>

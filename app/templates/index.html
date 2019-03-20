@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div><h3>В меню предоставлены следующие категории:</h3></div>
+    <input type="checkbox" id="saladmenu" class="hide" />
+    <label for="saladmenu">САЛАТЫ</label>
+    {% set vars = {'ind': 0} %}
+    <div>
+        <ul style="list-style-type:none;">
+            {% for u in salads %}
+            <li>
+            <div class="menuMeal"><b>{{ u.meal }} </b></div>    <div class="menuPrice">{{ u.price }} руб.</div> <br> <hr> <div>{{ u.amount }} г.</div>    <form action="{{ url_for('add_elem', id=vars.ind) }}" method="post" class="myButton">
+            {{ form_add.hidden_tag() }}
+            <b>{{ form_add.submit() }}</b>
+        </form> <br> <br>
+            {% set i = vars.ind+1 %}
+            {% if vars.update({'ind': i}) %} {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <br>
+    <input type="checkbox" id="soupmenu" class="hide" />
+    <label for="soupmenu">СУПЫ</label>
+    <div>
+        <ul style="list-style-type:none;">
+            {% for u in soups %}
+            <li>
+            <div class="menuMeal"><b>{{ u.meal }} </b></div>    <div class="menuPrice">{{ u.price }} руб.</div> <br> <hr> <div>{{ u.amount }} г.</div>  <form action="{{ url_for('add_elem', id=vars.ind) }}" method="post" class="myButton">
+            {{ form_add.hidden_tag() }}
+            <b>{{ form_add.submit() }}</b>
+        </form> <br> <br>
+            {% set i = vars.ind+1 %}
+            {% if vars.update({'ind': i}) %} {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <br>
+    <input type="checkbox" id="secondmenu" class="hide" />
+    <label for="secondmenu">ВТОРЫЕ БЛЮДА</label>
+    {% set vars = {'ind': 0} %}
+    <div>
+        <ul style="list-style-type:none;">
+            {% for u in seconds %}
+            <li>
+            <div class="menuMeal"><b>{{ u.meal }} </b></div>    <div class="menuPrice">{{ u.price }} руб.</div> <br> <hr> <div>{{ u.amount }} г.</div>    <form action="{{ url_for('add_elem', id=vars.ind) }}" method="post" class="myButton">
+            {{ form_add.hidden_tag() }}
+            <b>{{ form_add.submit() }}</b>
+        </form> <br> <br>
+            {% set i = vars.ind+1 %}
+            {% if vars.update({'ind': i}) %} {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <br>
+    <input type="checkbox" id="garnmenu" class="hide" />
+    <label for="garnmenu">ГАРНИРЫ</label>
+    <div>
+        <ul style="list-style-type:none;">
+            {% for u in garns %}
+            <li>
+            <div class="menuMeal"><b>{{ u.meal }} </b></div>    <div class="menuPrice">{{ u.price }} руб.</div> <br> <hr> <div>{{ u.amount }} г.</div>    <form action="{{ url_for('add_elem', id=vars.ind) }}" method="post" class="myButton">
+            {{ form_add.hidden_tag() }}
+            <b>{{ form_add.submit() }}</b>
+        </form> <br> <br>
+            {% set i = vars.ind+1 %}
+            {% if vars.update({'ind': i}) %} {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <br>
+    <input type="checkbox" id="drinksmenu" class="hide" />
+    <label for="drinksmenu">НАПИТКИ</label>
+    <div>
+        <ul style="list-style-type:none;">
+            {% for u in drinks %}
+            <li>
+            <div class="menuMeal"><b>{{ u.meal }}</b> </div>    <div class="menuPrice">{{ u.price }} руб.</div> <br> <hr> <div>{{ u.amount }} г.</div>    <form action="{{ url_for('add_elem', id=vars.ind) }}" method="post" class="myButton">
+            {{ form_add.hidden_tag() }}
+            <b>{{ form_add.submit() }}</b>
+        </form> <br> <br>
+            {% set i = vars.ind+1 %}
+            {% if vars.update({'ind': i}) %} {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
