@@ -8,10 +8,12 @@ from app import db
 from app.forms import AddMealForm, ClearCartForm, DeleteCartForm
 from importlib import reload
 
-import sys
 
-reload(sys)
-sys.setdefaultencoding('utf8')
+import sys
+import codecs
+
+sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
+
 
 # функция для добавления блюда из меню в корзину
 @app.route('/<int:id>/add_elem', methods=['POST'])
